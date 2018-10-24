@@ -1,0 +1,21 @@
+
+<h1>Altere o usuario!</h1>
+
+<div id="resposta">
+
+		<form action="/alterar/usuario/<%= usuario[0].id %>" method="POST" name="update">
+
+			nome: 
+			<input type="text" name="nome" placeholder="<%= usuario[0].nome %>">
+			email:
+			<input type="text" name="email" validate="email" placeholder="<%= usuario[0].email %>" validated="email">
+			senha: 
+			<input type="text" name="senha"  placeholder="<%= usuario[0].senha %>">
+			confirme a senha: <input type="text" name="senhaConfirm" >
+
+			<input type="submit" name="Update_dados" value="alterar">
+		</form><br>
+<hr>
+	<a href="/">Voltar</a>
+
+</div>

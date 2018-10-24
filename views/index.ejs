@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <p><%= message -%></p>
+
+<div id="formulario">
+	<form action="/registrando" method="POST">
+			nome: <input type="text" name="nome" required="É necessario preencher o nome!">
+			email: <input type="text" name="email" required="Insira um EMAIL!" validate="email">
+			senha: <input type="text" name="senha" required="Preencha a senha!">
+			confirme a senha: <input type="text" name="senhaConfirm" required="Preencha a senha!">
+			<input type="submit" name="Enviar">
+	</form><br>
+</div>
+
+<div id="resposta">
+	<table colspan="0" border="1" cellspacing="0" cellpadding="5">
+		<thead>
+			<tr>
+				<th>nome</th>
+				<th>email</th>
+				<th>senha</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<% for(i=0; i < dados.length; i++) { %>
+			<tr>
+				<td><%= dados[i].nome %></td>
+				<td><%= dados[i].email %></td>
+				<td><%= dados[i].senha %></td>
+				<td><a href="/alterar/usuario/ <%= dados[i].id%>">ALTERAR</a></td>
+				<td><a href="/apagar/usuario/ <%= dados[i].id%>" javascript="confirm('deseja realmente excluir?')" >EXCLUIR</a></td>
+			</tr>
+			<% } %>
+		</tbody>
+	</table>
+</div>
+
+  </body>
+</html>
