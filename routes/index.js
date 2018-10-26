@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 
 	let usuario = new User();
 	usuario.mostraDados((callback) => {
+		console.log(callback);
 		res.render('index', {
 			title: 'Bem vindo a simples API',
 			message: "", 
