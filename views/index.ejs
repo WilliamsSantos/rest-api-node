@@ -1,47 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+	    <title><%= title %></title>
+    	<% include head_dependences.ejs -%>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <div id="content">
+  	<header class="navbar navbar-dark bg-dark">
+		    <h1><span style="color:white;"><%= title %></span></h1>
+		    <p><%= message -%></p>
+  	</header>
+		<hr>
+	
+		<form id="formulario" action="/registrando" method="POST" class="formulario_cadastro" onsubmit="return validarCampos()">
+		  <div class="row">
+		    <div class="col">
+					<input type="text" class="form-control" name="nome" placeholder=" Nome" required="É necessario preencher o nome!" title="Nome">
+		    </div>
+		    <div class="col">
+					<input type="text" class="form-control" name="email"  placeholder="Email" required="Insira um EMAIL!" title="Email ex: email@exemplo.com">
+		    </div>
+		    <div class="col">
+					<input type="text" class="form-control" name="senha"  placeholder="************" required="Preencha a senha!" title="Senha">
+		    </div>
+		    <div class="col">
+					<input type="text" name="senhaConfirm" class="form-control" placeholder="************" required="É necessario confirmar senha!" title="Confirmar senha">
+		    </div>
+		  <button type="submit" class="btn btn-primary">Cadastrar</button>
+		  </div>
+		</form><br><br>
 
-    <p><%= message -%></p>
 
-<div id="formulario">
-	<form action="/registrando" method="POST">
-			nome: <input type="text" name="nome" required="É necessario preencher o nome!">
-			email: <input type="text" name="email" required="Insira um EMAIL!" validate="email">
-			senha: <input type="text" name="senha" required="Preencha a senha!">
-			confirme a senha: <input type="text" name="senhaConfirm" required="Preencha a senha!">
-			<input type="submit" name="Enviar">
-	</form><br>
-</div>
-
-<div id="resposta">
-	<table colspan="0" border="1" cellspacing="0" cellpadding="5">
-		<thead>
-			<tr>
-				<th>nome</th>
-				<th>email</th>
-				<th>senha</th>
-			</tr>	
-		</thead>
-		<tbody>
-			<% for(i=0; i < dados.length; i++) { %>
-			<tr>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Senha</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+		<% for(i=0; i < dados.length; i++) { %>
+    <tr>
+      <th scope="row"><%= dados[i].idusuario %></th>
 				<td><%= dados[i].nome %></td>
 				<td><%= dados[i].email %></td>
 				<td><%= dados[i].senha %></td>
-				<td><a href="/usuario/ <%= dados[i].idusuario %>">ALTERAR</a></td>
-				<td><a href="/apagar/usuario <%= dados[i].idusuario %>" >EXCLUIR</a></td>
-			</tr>
-			<% } %>
-		</tbody>
-	</table>
-</div>
+				<td><a href="/usuario/ <%= dados[i].idusuario %>" class="btn btn-info">ALTERAR</a></td>
+				<td><a href="/apagar/usuario <%= dados[i].idusuario %>" class="btn btn-danger" >EXCLUIR</a></td>
+    </tr>
+		<% } %>
+  </tbody>
+</table>
 
+		<% include footer.ejs %>
+  </div>	
   </body>
+<% include js_dependences.ejs -%>
+
 </html>
