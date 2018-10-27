@@ -12,7 +12,7 @@
   	</header>
 		<hr>
 	
-		<form id="formulario" action="/registrando" method="POST" class="formulario_cadastro" onsubmit="return validarCampos()">
+		<form id="formulario" action="/registrando" method="POST" class="formulario_cadastro" onSubmit="return validarCampos();">
 		  <div class="row">
 		    <div class="col">
 					<input type="text" class="form-control" name="nome" placeholder=" Nome" required="É necessario preencher o nome!" title="Nome">
@@ -21,10 +21,10 @@
 					<input type="text" class="form-control" name="email"  placeholder="Email" required="Insira um EMAIL!" title="Email ex: email@exemplo.com">
 		    </div>
 		    <div class="col">
-					<input type="text" class="form-control" name="senha"  placeholder="************" required="Preencha a senha!" title="Senha">
+					<input id="usuario_senha" type="text" class="form-control" name="senha"  placeholder="************" required="Preencha a senha!" title="Senha">
 		    </div>
 		    <div class="col">
-					<input type="text" name="senhaConfirm" class="form-control" placeholder="************" required="É necessario confirmar senha!" title="Confirmar senha">
+					<input id="usuario_ConfSenha" type="text" name="senhaConfirm" class="form-control"  placeholder="************" required="É necessario confirmar senha!" title="Confirmar senha">
 		    </div>
 		  <button type="submit" class="btn btn-primary">Cadastrar</button>
 		  </div>
@@ -55,6 +55,23 @@
 		<% } %>
   </tbody>
 </table>
+
+
+<script type="text/javascript">
+	var validarCampos = function(){
+		if(document.getElementById('usuario_ConfSenha') != document.getElementById('usuario_ConfSenha')){
+			alert('Senhas diferentes!');
+			document.getElementById('usuario_ConfSenha').focus();
+			return false;
+		}
+		if(document.getElementById('usuario_email').indexOf('@') == -1){
+			alert('Insira um email valido!');
+			return false;
+		}
+	}
+
+</script>
+
 
 		<% include footer.ejs %>
   </div>	
