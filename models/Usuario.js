@@ -1,6 +1,5 @@
 const mysql	= require('mysql');
 const conn  = require('../db/db_connection');
-
 var Usuario = function(){}	
 
 
@@ -50,7 +49,7 @@ var Usuario = function(){}
 		conn.connect((err) => {
 		  if (err) console.log(err);
 		  //ele deleta os dados por ID
-		  var sql = "DELETE FROM usuarios.usuario WHERE id = ?";
+		  var sql = "DELETE FROM usuarios.usuario WHERE idusuario = ?";
 		  conn.query(sql,[this.usuario], function (err, result) {
 		    if (err) console.log(err)
 		    console.log("Dado deletado com sucesso!!!: " + result.affectedRows);
@@ -71,7 +70,7 @@ var Usuario = function(){}
 				  if (err) {
 				  	console.log(err);
 				  }
-				  sql = "SELECT * FROM usuarios.usuario WHERE id="+this.identificador;
+				  sql = "SELECT * FROM usuarios.usuario WHERE idusuario="+this.identificador;
 				  console.log("ESSE É o sql = "+sql);
 				  conn.query(sql, function (err, result, fields) {
 				    if (err){
@@ -96,7 +95,7 @@ var Usuario = function(){}
 		
 		conn.connect(function(err) {
 		  if (err) console.log(err);
-			var sql = "UPDATE 'usuarios'.'usuario' SET 'nome'='"+this.nome+"', 'email'='"+this.email+"', 'senha'='"+this.senha+"' WHERE 'id'='"+this.identificador+"'";
+			var sql = "UPDATE 'usuarios'.'usuario' SET 'nome'='"+this.nome+"', 'email'='"+this.email+"', 'senha'='"+this.senha+"' WHERE 'idusuario'='"+this.identificador+"'";
 		  conn.query(sql, function (err, result) {
 		    if (err) throw err;
 		    console.log(result.affectedRows + " UPDATE feito com sucesso!!");

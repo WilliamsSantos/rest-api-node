@@ -35,8 +35,8 @@
 				<td><%= dados[i].nome %></td>
 				<td><%= dados[i].email %></td>
 				<td><%= dados[i].senha %></td>
-				<td><a href="/alterar/usuario/ <%= dados[i].id%>">ALTERAR</a></td>
-				<td><a href="/apagar/usuario/ <%= dados[i].id%>" javascript="confirm('deseja realmente excluir?')" >EXCLUIR</a></td>
+				<td><a href="/usuario/ <%= dados[i].idusuario %>">ALTERAR</a></td>
+				<td><a href="/apagar/usuario <%= dados[i].idusuario %>" >EXCLUIR</a></td>
 			</tr>
 			<% } %>
 		</tbody>

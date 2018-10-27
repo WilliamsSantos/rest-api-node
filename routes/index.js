@@ -35,7 +35,7 @@ router.post('/registrando', function(req, res, next) {
 });
 
 //UPDATE view
-router.get('/alterar/usuario/(:id)', function(req, res, next) {
+router.get('/usuario/(:id)', function(req, res, next) {
   
 	let usuario_id 	= [req.params.id];
 	let usuario = new User();
@@ -51,7 +51,7 @@ router.get('/alterar/usuario/(:id)', function(req, res, next) {
 		
 });
 
-router.post('/alterar/usuario/(:id)', function(req, res, next) {
+router.post('/alterar/usuario/:id', function(req, res, next) {
 	
 	// console.log('Dentro do put');
 	
