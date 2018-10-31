@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 	});
 });
 
-router.get('/apagar/usuario/:id', function(req, res, next) {
+router.get('/apagar/usuario:id', function(req, res, next) {
   
 	let usuario = new User();
 	usuario.apagarDados(req.params.id);
@@ -51,30 +51,22 @@ router.get('/usuario/(:id)', function(req, res, next) {
 		
 });
 
-router.post('/alterar/usuario/:id', function(req, res, next) {
+router.post('/alterado:id', function(req, res, next) {
 	
-	// console.log('Dentro do put');
+	let novosDados = [
+		{
+			id: 	req.params.id,
+			nome: 	req.body.nome, 
+			email: 	req.body.email, 
+			senha: 	req.body.senha 
+		}
 	
-	// 	let usuario = new User();
-	
-	// 	let novosDados = {
-	// 		 id: req.params.id,
-	// 		 nome: req.body.nome, 
-	// 		 email: req.body.email, 
-	// 		 senha:req.body.senha
-	// 	};
-	
-			console.log('atualizado com sucesso');
+	];
 
-		// usuario.atualizarDados((novosDados) => { 
-		// 	res.render('index', {
-		// 		title: 'Alterar usuario',
-		// 		message: "Alterado com sucesso!",
-		// 		usuario: novosDados
-		// 	});
-		// });
-
-
+	console.log('Novos dados para atualizar '+ novosDados);
+	let usuario = new User();
+	usuario.atualizarDados(novosDados);
+	res.redirect('/');	        
 
 });
 

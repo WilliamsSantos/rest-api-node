@@ -56,6 +56,15 @@
   </tbody>
 </table>
 
+<hr>
+
+<div id="chartcontainer">
+
+	This is just a replacement in case Javascript is not available or used for SEO purposes
+
+</div>
+
+<hr>
 
 <script type="text/javascript">
 	var validarCampos = function(){
@@ -68,7 +77,14 @@
 			alert('Insira um email valido!');
 			return false;
 		}
+		return true;
 	}
+
+
+	var myData = new Array([10, 20], [15, 10], [20, 30], [25, 10], [30, 5]);
+	var myChart = new JSChart('chartcontainer', 'line');
+	myChart.setDataArray(myData);
+	myChart.draw();
 
 </script>
 
