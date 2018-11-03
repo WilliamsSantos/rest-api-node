@@ -91,37 +91,14 @@ var Usuario = function(){}
 		// console.log('=========================================');
 
 		let identificador 	= novosDados[0].id;
-		let nome 			= novosDados[0].nome;
-		let email			= novosDados[0].email;
-		let senha 			= novosDados[0].senha;
+		let nome 						= novosDados[0].nome;
+		let email						= novosDados[0].email;
+		let senha 					= novosDados[0].senha;
 	
-	//tem que verificar as variaveis preenchidas e as recolher dentro de uma array ou hash. 
-	// Depois puxar os dados que já estão cadastrodos no db do usuario selecionado 
-	// e dizer se a variavel com o novo dado está preenchida então salva no banco de dados, 
-	// se está vazia então puxa aquele dado antigo ja cadastado no db preenche a variavel depois, salva  	
 	console.log("Estes são os dados dentro do atualizarDados "+identificador+" "+ nome +" "+ email +" "+ senha);			
-				dados_preenchidos = {};
-					if(nome == ""){				
-						dados_preenchidos['nome'] = nome;
-						console.log("Estes dados "+dados_preenchidos);
-					}else{
-						dados_preenchidos['nome'] = nome;
-					}
-					if(senha == ""){
-						dados_preenchidos['senha'] = senha;
-					}else{
-						dados_preenchidos['senha'] = senha ;
-					}
-					if(email == ""){
-						dados_preenchidos['email'] = email;
-					}else{
-						dados_preenchidos['email'] = email;
-					}
-			
-			console.log("dados preenchidos depois do loop "+dados_preenchidos);
 			conn.connect(function(err) {
 			  if (err) console.log(err);
-				var sql = "UPDATE `usuarios`.`usuario` SET `nome`=`"+nome+"`, `email`=`"+email+"`, `senha`=`"+senha+"` WHERE `idusuario` =`"+identificador+"`;";
+				var sql = "UPDATE `usuarios`.`usuario` SET `nome`=`"+nome+"`, `email`=`"+email+"`, `senha`=`"+senha+"` WHERE `idusuario` = `"+identificador+"` ;";
 			  conn.query(sql, function (err, result) {
 			    if (err) throw err;
 			    console.log(result.affectedRows + " UPDATE feito com sucesso!!");
